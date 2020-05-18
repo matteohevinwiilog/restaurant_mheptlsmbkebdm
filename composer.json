@@ -1,0 +1,23 @@
+{
+    "name": "mheptlsmbkebdm/restaurant-mheptlsmbkebdm",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mheptlsmbkebdm\\RestaurantMheptlsmbkebdm\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mheptlsmbkebdm\\RestaurantMheptlsmbkebdm\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "mheptlsmbkebdm/restaurant-mheptlsmbkebdm": "self.version",
+        "typo3-ter/restaurant-mheptlsmbkebdm": "self.version"
+    }
+}

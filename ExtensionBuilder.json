@@ -1,0 +1,69 @@
+{
+    "modules": [],
+    "properties": {
+        "backendModules": [],
+        "description": "",
+        "emConf": {
+            "category": "plugin",
+            "custom_category": "",
+            "dependsOn": "typo3 => 9.5.0-9.5.99\n",
+            "disableLocalization": false,
+            "disableVersioning": true,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "9.5.0-9.5.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "restaurant_mheptlsmbkebdm",
+        "name": "Restaurant MHEPTLSMBKEBDM",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [
+            {
+                "company": "DAWIN Alt",
+                "email": "matteo.hevin@etu.u-bordeaux.fr",
+                "name": "Matteo HEVIN",
+                "role": "Developer"
+            },
+            {
+                "company": "DAWIN Alt",
+                "email": "eloi.ac@etu.u-bordeaux.fr",
+                "name": "Eloi PELOUX",
+                "role": "Developer"
+            },
+            {
+                "company": "DAWIN Alt",
+                "email": "elie.boury@etu.u-bordeaux.fr",
+                "name": "Elie BOURY ",
+                "role": "Developer"
+            },
+            {
+                "company": "DAWIN Alt",
+                "email": "thomas.le-saux@etu.u-bordeaux.fr",
+                "name": "Thomas LE SAUX",
+                "role": "Developer"
+            },
+            {
+                "company": "DAWIN Alt",
+                "email": "marwane.benou-kaiss@etu.u-bordeaux.fr",
+                "name": "Marwane BENOU-KAISS",
+                "role": "Developer"
+            },
+            {
+                "company": "DAWIN Alt",
+                "email": "dorian.morax@etu.u-bordeaux.fr",
+                "name": "Dorian MORAX",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [],
+        "vendorName": "Mheptlsmbkebdm"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2020-05-18 06:00",
+        "extension_builder_version": "9.10.2",
+        "be_user": " (1)"
+    }
+}
