@@ -1,23 +1,81 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-	<f:layout name="Default" />
+<f:layout name="Default"/>
 
-	This Template is responsible for displaying a single view for a domain object
+This Template is responsible for displaying a single view for a domain object
 
-	If you modify this template, do not forget to change the overwrite settings
-	in /Configuration/ExtensionBuilder/settings.yaml:
-	  Resources:
-		Private:
-		  Templates:
-			Show.html: keep
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+Show.html: keep
 
-	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
-	<f:section name="content">
-		<h1>Single View for Menu</h1>
+<f:section name="content">
+	<style>
+		.dishes {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
 
-		<f:flashMessages />
-		<f:render partial="Menu/Properties" arguments="{menu:menu}" />
-		<f:link.action action="list">Back to list</f:link.action><br />
-		<f:link.action action="new">New Menu</f:link.action>
-	</f:section>
+		.dishes > div {
+			width: 25%;
+		}
+	</style>
+	<f:flashMessages/>
+
+	<h1>Menu "{menu.name}"</h1>
+	<f:format.raw>{menu.description}</f:format.raw>
+
+	<h2>Entry</h2>
+	<div class="dishes">
+	<f:for each="{menu.entries}" as="entry">
+		<div>
+			{entry.name}<br>
+			<f:image image="{entry.photo}" alt="Photo of {entry.name}" width="150"/>
+		</div>
+	</f:for>
+	</div>
+
+	<h2>Main dish</h2>
+	<div class="dishes">
+	<f:for each="{menu.mainDishes}" as="entry">
+		<div>
+			{entry.name}<br>
+			<f:image image="{entry.photo}" alt="Photo of {entry.name}" width="150"/>
+		</div>
+	</f:for>
+	</div>
+
+	<h2>Cheese</h2>
+	<div class="dishes">
+	<f:for each="{menu.cheeses}" as="entry">
+		<div>
+			{entry.name}<br>
+			<f:image image="{entry.photo}" alt="Photo of {entry.name}" width="150"/>
+		</div>
+	</f:for>
+	</div>
+
+	<h2>Dessert</h2>
+	<div class="dishes">
+	<f:for each="{menu.desserts}" as="entry">
+		<div>
+			{entry.name}<br>
+			<f:image image="{entry.photo}" alt="Photo of {entry.name}" width="150"/>
+		</div>
+	</f:for>
+	</div>
+
+	<h2>Price</h2>
+	<f:if condition="{menu.discount}">
+		<f:then>{menu.price} (discount of -{menu.discount}%)</f:then>
+		<f:else>{menu.price}</f:else>
+	</f:if>
+
+	<f:link.action action="list">Back to list</f:link.action>
+	<br/>
+</f:section>
 </html>

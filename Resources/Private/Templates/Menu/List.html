@@ -1,48 +1,57 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-	<f:layout name="Default" />
+<f:layout name="Default"/>
 
-	This Template is responsible for creating a table of domain objects.
+This Template is responsible for creating a table of domain objects.
 
-	If you modify this template, do not forget to change the overwrite settings
-	in /Configuration/ExtensionBuilder/settings.yaml:
-	  Resources:
-		Private:
-		  Templates:
-			List.html: keep
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+List.html: keep
 
-	Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
-	<f:section name="content">
-		<h1>Listing for Menu</h1>
+<f:section name="content">
+	<h1>Menus list</h1>
 
-		<f:flashMessages />
+	<f:flashMessages/>
 
-		<table  class="tx_restaurantmheptlsmbkebdm" >
-			<tr>
-				<th><f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_menu.name" /></th>
-				<th><f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_menu.price" /></th>
-				<th><f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_menu.description" /></th>
-				<th><f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_menu.service" /></th>
-				<th><f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_menu.available" /></th>
-				<th><f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_menu.discount" /></th>
-				<th> </th>
-				<th> </th>
-			</tr>
+	<table class="tx_restaurantmheptlsmbkebdm" style="width: 100%">
+		<tr>
+			<th>
+				<f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_menu.name"/>
+			</th>
+			<th>Original price</th>
+			<th>
+				<f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_menu.price"/>
+			</th>
+			<th>Availability</th>
+			<th>Actions</th>
+		</tr>
 
-			<f:for each="{menus}" as="menu">
+		<f:widget.paginate objects="{menus}" as="paginatedMenus" configuration="{itemsPerPage: settings.list.paginate.itemsPerPage}">
+			<f:for each="{paginatedMenus}" as="menu">
+				<f:variable name="discount" value="{menu.price * menu.discount / 100}"/>
+
 				<tr>
-					<td><f:link.action action="show" arguments="{menu : menu}"> {menu.name}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{menu : menu}"> {menu.price}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{menu : menu}"> {menu.description}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{menu : menu}"> {menu.service}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{menu : menu}"> {menu.available}</f:link.action></td>
-					<td><f:link.action action="show" arguments="{menu : menu}"> {menu.discount}</f:link.action></td>
-					<td><f:link.action action="edit" arguments="{menu : menu}">Edit</f:link.action></td>
-					<td><f:link.action action="delete" arguments="{menu : menu}">Delete</f:link.action></td>
+					<td>
+						<f:link.action action="show" arguments="{menu : menu}"> {menu.name}</f:link.action>
+					</td>
+					<td>{menu.price - discount}</td>
+					<td>{menu.price}</td>
+					<td>
+						<f:if condition="{menu.available}">
+							<f:then>Available</f:then>
+							<f:else>Not available</f:else>
+						</f:if>
+					</td>
+					<td>
+						<f:link.action action="show" arguments="{menu : menu}">Show more</f:link.action>
+					</td>
 				</tr>
 			</f:for>
-		</table>
-
-		<f:link.action action="new">New Menu</f:link.action>
-	</f:section>
+		</f:widget.paginate>
+	</table>
+</f:section>
 </html>
