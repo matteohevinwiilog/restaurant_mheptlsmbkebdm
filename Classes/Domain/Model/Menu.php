@@ -23,9 +23,13 @@ namespace Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model;
 class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
+    const MIDI = 1;
+    const SOIR = 2;
+    const MIDI_SOIR = 3;
+
     /**
      * Nom
-     * 
+     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -33,7 +37,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Prix
-     * 
+     *
      * @var float
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -41,7 +45,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Description
-     * 
+     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -49,7 +53,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Service
-     * 
+     *
      * @var int
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -57,21 +61,21 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Disponible
-     * 
+     *
      * @var bool
      */
     protected $available = false;
 
     /**
      * Réduction
-     * 
+     *
      * @var float
      */
     protected $discount = 0.0;
 
     /**
      * Les entrées
-     * 
+     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish>
      * @lazy
      */
@@ -79,7 +83,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Les plats principaux
-     * 
+     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish>
      * @lazy
      */
@@ -87,7 +91,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Les fromages
-     * 
+     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish>
      * @lazy
      */
@@ -95,7 +99,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Les desserts
-     * 
+     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish>
      * @lazy
      */
@@ -103,7 +107,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Les boissons
-     * 
+     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Drink>
      * @lazy
      */
@@ -124,7 +128,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Do not modify this method!
      * It will be rewritten on each save in the extension builder
      * You may modify the constructor of this class instead
-     * 
+     *
      * @return void
      */
     protected function initStorageObjects()
@@ -138,7 +142,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the name
-     * 
+     *
      * @return string $name
      */
     public function getName()
@@ -148,7 +152,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the name
-     * 
+     *
      * @param string $name
      * @return void
      */
@@ -159,7 +163,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the price
-     * 
+     *
      * @return float $price
      */
     public function getPrice()
@@ -169,7 +173,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the price
-     * 
+     *
      * @param float $price
      * @return void
      */
@@ -180,7 +184,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the description
-     * 
+     *
      * @return string $description
      */
     public function getDescription()
@@ -190,7 +194,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the description
-     * 
+     *
      * @param string $description
      * @return void
      */
@@ -201,7 +205,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the service
-     * 
+     *
      * @return int $service
      */
     public function getService()
@@ -211,7 +215,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the service
-     * 
+     *
      * @param int $service
      * @return void
      */
@@ -222,7 +226,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the available
-     * 
+     *
      * @return bool $available
      */
     public function getAvailable()
@@ -232,7 +236,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the available
-     * 
+     *
      * @param bool $available
      * @return void
      */
@@ -243,7 +247,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the boolean state of available
-     * 
+     *
      * @return bool
      */
     public function isAvailable()
@@ -253,7 +257,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the discount
-     * 
+     *
      * @return float $discount
      */
     public function getDiscount()
@@ -263,7 +267,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the discount
-     * 
+     *
      * @param float $discount
      * @return void
      */
@@ -274,7 +278,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Adds a Dish
-     * 
+     *
      * @param \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish $entry
      * @return void
      */
@@ -285,7 +289,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Removes a Dish
-     * 
+     *
      * @param \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish $entryToRemove The Dish to be removed
      * @return void
      */
@@ -296,7 +300,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the entries
-     * 
+     *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish> $entries
      */
     public function getEntries()
@@ -306,7 +310,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the entries
-     * 
+     *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish> $entries
      * @return void
      */
@@ -317,7 +321,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Adds a Dish
-     * 
+     *
      * @param \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish $mainDish
      * @return void
      */
@@ -328,7 +332,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Removes a Dish
-     * 
+     *
      * @param \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish $mainDishToRemove The Dish to be removed
      * @return void
      */
@@ -339,7 +343,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the mainDishes
-     * 
+     *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish> $mainDishes
      */
     public function getMainDishes()
@@ -349,7 +353,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the mainDishes
-     * 
+     *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish> $mainDishes
      * @return void
      */
@@ -360,7 +364,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Adds a Dish
-     * 
+     *
      * @param \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish $cheese
      * @return void
      */
@@ -371,7 +375,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Removes a Dish
-     * 
+     *
      * @param \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish $cheeseToRemove The Dish to be removed
      * @return void
      */
@@ -382,7 +386,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the cheeses
-     * 
+     *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish> $cheeses
      */
     public function getCheeses()
@@ -392,7 +396,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the cheeses
-     * 
+     *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish> $cheeses
      * @return void
      */
@@ -403,7 +407,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Adds a Dish
-     * 
+     *
      * @param \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish $dessert
      * @return void
      */
@@ -414,7 +418,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Removes a Dish
-     * 
+     *
      * @param \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish $dessertToRemove The Dish to be removed
      * @return void
      */
@@ -425,7 +429,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the desserts
-     * 
+     *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish> $desserts
      */
     public function getDesserts()
@@ -435,7 +439,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the desserts
-     * 
+     *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish> $desserts
      * @return void
      */
@@ -446,7 +450,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Adds a Drink
-     * 
+     *
      * @param \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Drink $drink
      * @return void
      */
@@ -457,7 +461,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Removes a Drink
-     * 
+     *
      * @param \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Drink $drinkToRemove The Drink to be removed
      * @return void
      */
@@ -468,7 +472,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the drinks
-     * 
+     *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Drink> $drinks
      */
     public function getDrinks()
@@ -478,7 +482,7 @@ class Menu extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the drinks
-     * 
+     *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Drink> $drinks
      * @return void
      */

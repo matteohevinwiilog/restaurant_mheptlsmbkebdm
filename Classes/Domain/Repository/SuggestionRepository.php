@@ -18,8 +18,26 @@ namespace Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Repository;
  *
  ***/
 /**
- * The repository for Suggestions
+ * The repository for Suggestion
  */
 class SuggestionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+    /**
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function currents() {
+        $query = $this->createQuery();
+
+        $now = (new \DateTime())->format('Y-m-d H:i:s');
+
+        $constraint = $query->logicalAnd([
+            $query->lessThanOrEqual('start', $now) &&
+            $query->greaterThan('end', $now)
+        ]);
+
+        return $query
+            ->matching($constraint)
+            ->execute();
+    }
 }

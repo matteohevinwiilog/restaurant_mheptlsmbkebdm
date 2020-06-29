@@ -25,7 +25,7 @@ class SuggestionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
     /**
      * suggestionRepository
-     * 
+     *
      * @var \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Repository\SuggestionRepository
      * @inject
      */
@@ -33,16 +33,18 @@ class SuggestionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
     /**
      * action current
-     * 
+     *
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function currentAction()
     {
+        $this->view->assign('suggestions', $this->suggestionRepository->currents());
     }
 
     /**
      * action incoming
-     * 
+     *
      * @return void
      */
     public function incomingAction()

@@ -49,16 +49,31 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 		<f:for each="{dishes}" as="dish">
 			<tr>
-				<f:link.action action="show" arguments="{dish : dish}">
-					<td>{dish.name}</td>
-					<td>{dish.description}</td>
-					<td>{dish.photo.originalResource.name}</td>
-					<td>{dish.type}</td>
-					<td>{dish.price}</td>
-					<td>{dish.discount}</td>
-					<td>{dish.allergens}</td>
-					<td>{dish.frozens}</td>
-				</f:link.action>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.name}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.description}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.photo.originalResource.name}
+					</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.type}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.price}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.discount}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.allergens}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.frozens}</f:link.action>
+				</td>
 			</tr>
 		</f:for>
 	</table>
