@@ -71,8 +71,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 	<h2>Price</h2>
 	<f:if condition="{menu.discount}">
-		<f:then>{menu.price} (discount of -{menu.discount}%)</f:then>
-		<f:else>{menu.price}</f:else>
+		<f:then>{menu.price}€ (discount of {menu.discount}€)</f:then>
+		<f:else>{menu.price}€</f:else>
 	</f:if>
 
 	<f:link.action action="list">Back to list</f:link.action>

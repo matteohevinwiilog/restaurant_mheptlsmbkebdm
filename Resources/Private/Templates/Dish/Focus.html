@@ -14,18 +14,15 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:section name="content">
 
-	<h1>Listing for focused dishes</h1>
+	<h1>Focused dishes</h1>
 
-	<table class="tx_restaurantmheptlsmbkebdm">
+	<table class="tx_restaurantmheptlsmbkebdm" style="width: 100%">
 		<tr>
 			<th>
 				<f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_dish.name"/>
 			</th>
 			<th>
 				<f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_dish.description"/>
-			</th>
-			<th>
-				<f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_dish.photo"/>
 			</th>
 			<th>
 				<f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_dish.type"/>
@@ -42,38 +39,51 @@ Otherwise your changes will be overwritten the next time you save the extension 
 			<th>
 				<f:translate key="tx_restaurantmheptlsmbkebdm_domain_model_dish.frozens"/>
 			</th>
-			<th></th>
-			<th></th>
+			<th>Actions</th>
 		</tr>
-		<f:for each="{dishes}" as="dish">
-			<tr>
-				<td>
-					<f:link.action action="show" arguments="{dish : dish}">{dish.name}</f:link.action>
-				</td>
-				<td>
-					<f:link.action action="show" arguments="{dish : dish}">{dish.description}</f:link.action>
-				</td>
-				<td>
-					<f:link.action action="show" arguments="{dish : dish}">{dish.photo.originalResource.name}
-					</f:link.action>
-				</td>
-				<td>
-					<f:link.action action="show" arguments="{dish : dish}">{dish.type}</f:link.action>
-				</td>
-				<td>
-					<f:link.action action="show" arguments="{dish : dish}">{dish.price}</f:link.action>
-				</td>
-				<td>
-					<f:link.action action="show" arguments="{dish : dish}">{dish.discount}</f:link.action>
-				</td>
-				<td>
-					<f:link.action action="show" arguments="{dish : dish}">{dish.allergens}</f:link.action>
-				</td>
-				<td>
-					<f:link.action action="show" arguments="{dish : dish}">{dish.frozens}</f:link.action>
-				</td>
-			</tr>
-		</f:for>
+		<f:widget.paginate objects="{dishes}"
+						   as="paginatedDishes"
+						   configuration="{itemsPerPage: settings.list.paginate.itemsPerPage}">
+
+			<f:for each="{paginatedDishes}" as="dish">
+				<tr>
+					<td>
+						<f:link.action action="show" arguments="{dish : dish}">{dish.name}</f:link.action>
+					</td>
+					<td>
+						<f:link.action action="show" arguments="{dish : dish}">{dish.description}</f:link.action>
+					</td>
+					<td>
+						<f:link.action action="show" arguments="{dish : dish}">{dish.type}</f:link.action>
+					</td>
+					<td>
+						<f:link.action action="show" arguments="{dish : dish}">{dish.price}€</f:link.action>
+					</td>
+					<td>
+						<f:link.action action="show" arguments="{dish : dish}">{dish.discount}</f:link.action>
+					</td>
+					<td>
+						<f:link.action action="show" arguments="{dish : dish}">
+							<f:if condition="{dish.allergens}">
+								<f:then>Yes</f:then>
+								<f:else>No</f:else>
+							</f:if>
+						</f:link.action>
+					</td>
+					<td>
+						<f:link.action action="show" arguments="{dish : dish}">
+							<f:if condition="{dish.frozens}">
+								<f:then>Yes</f:then>
+								<f:else>No</f:else>
+							</f:if>
+						</f:link.action>
+					</td>
+					<td>
+						<f:link.action action="show" arguments="{dish : dish}">Show more</f:link.action>
+					</td>
+				</tr>
+			</f:for>
+		</f:widget.paginate>
 	</table>
 </f:section>
 </html>

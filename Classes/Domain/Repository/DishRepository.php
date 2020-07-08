@@ -42,4 +42,32 @@ class DishRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             ->matching($constraint)
             ->execute();
     }
+
+    public function search(DishSearchQuery $search)
+    {
+        $query = $this->createQuery();
+        $constraints = [];
+
+        if($search->getSearch() !== null){
+            $constraints = $query->like('name', $search->getSearch());
+        }
+
+        if($search->getType()){
+            $constraints[] = $query->equals('type', $search->getType());
+        }
+
+        if($search->getAllergens() !== null) {
+            $constraints[] = $query->equals('allergens', $search->getAllergens());
+        }
+
+        if($search->getFrozens() !== null) {
+            $constraints[] = $query->equals('frozens', $search->getFrozens());
+        }
+
+        if(count($constraints)){
+            $query->matching($query->logicalAnd($constraints));
+        }
+
+        return $query->execute();
+    }
 }

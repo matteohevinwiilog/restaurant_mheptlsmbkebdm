@@ -1,7 +1,9 @@
 <?php
+
 namespace Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Controller;
 
 
+use Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Repository\DishSearchQuery;
 use TYPO3\CMS\Core\Exception;
 
 /***
@@ -19,6 +21,7 @@ use TYPO3\CMS\Core\Exception;
  *           Dorian MORAX <dorian.morax@etu.u-bordeaux.fr>, DAWIN Alt
  *
  ***/
+
 /**
  * DishController
  */
@@ -38,10 +41,18 @@ class DishController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      *
      * @return void
      */
-    public function listAction()
+    public function listAction(DishSearchQuery $search = null)
     {
-        $dishes = $this->dishRepository->findAll();
-        $this->view->assign('dishes', $dishes);
+        if($search != null) {
+            $dishes = $this->dishRepository->search($search);
+        } else {
+            $dishes = $this->dishRepository->findAll();
+        }
+
+        $this->view->assignMultiple([
+            'dishes' => $dishes,
+            'search' => $search
+        ]);
     }
 
     /**
@@ -58,10 +69,15 @@ class DishController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * action search
      *
+     * @param DishSearchQuery $search
      * @return void
      */
-    public function searchAction()
+    public function searchAction(DishSearchQuery $search)
     {
+        $this->view->assignMultiple([
+            'dishes' => $this->dishRepository->search($search),
+            'search' => $search
+        ]);
     }
 
     /**

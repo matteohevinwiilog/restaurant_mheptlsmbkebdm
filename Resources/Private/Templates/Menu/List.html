@@ -32,14 +32,12 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 		<f:widget.paginate objects="{menus}" as="paginatedMenus" configuration="{itemsPerPage: settings.list.paginate.itemsPerPage}">
 			<f:for each="{paginatedMenus}" as="menu">
-				<f:variable name="discount" value="{menu.price * menu.discount / 100}"/>
-
 				<tr>
 					<td>
 						<f:link.action action="show" arguments="{menu : menu}"> {menu.name}</f:link.action>
 					</td>
-					<td>{menu.price - discount}</td>
-					<td>{menu.price}</td>
+					<td>{menu.price - menu.discount}€</td>
+					<td>{menu.price}€</td>
 					<td>
 						<f:if condition="{menu.available}">
 							<f:then>Available</f:then>
