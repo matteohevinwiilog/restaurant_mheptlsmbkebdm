@@ -133,7 +133,7 @@ return [
                 'rows' => 15,
                 'eval' => 'trim',
             ],
-            
+
         ],
         'photo' => [
             'exclude' => false,
@@ -188,7 +188,10 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['-- Label --', 0],
+                    ['Entrée', \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish::TYPE_ENTRY],
+                    ['Plat principal', \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish::TYPE_MAIN],
+                    ['Fromage', \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish::TYPE_CHEESE],
+                    ['Dessert', \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish::TYPE_DESSERT],
                 ],
                 'size' => 1,
                 'maxitems' => 1,
@@ -239,6 +242,6 @@ return [
                 'default' => 0,
             ]
         ],
-    
+
     ],
 ];

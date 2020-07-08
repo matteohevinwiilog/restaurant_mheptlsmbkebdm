@@ -14,7 +14,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:section name="content">
 
-	<h1>Listing for Dish</h1>
+	<h1>Listing for focused dishes</h1>
 
 	<table class="tx_restaurantmheptlsmbkebdm">
 		<tr>
@@ -45,40 +45,36 @@ Otherwise your changes will be overwritten the next time you save the extension 
 			<th></th>
 			<th></th>
 		</tr>
-		<f:widget.paginate objects="{dishes}"
-						   as="paginatedDishes"
-						   configuration="{itemsPerPage: settings.list.paginate.itemsPerPage}">
-
-			<f:for each="{paginatedDishes}" as="dish">
-				<tr>
-					<td>
-						<f:link.action action="show" arguments="{dish : dish}">{dish.name}</f:link.action>
-					</td>
-					<td>
-						<f:link.action action="show" arguments="{dish : dish}">{dish.description}</f:link.action>
-					</td>
-					<td>
-						<f:link.action action="show" arguments="{dish : dish}">{dish.photo.originalResource.name}
-						</f:link.action>
-					</td>
-					<td>
-						<f:link.action action="show" arguments="{dish : dish}">{dish.type}</f:link.action>
-					</td>
-					<td>
-						<f:link.action action="show" arguments="{dish : dish}">{dish.price}</f:link.action>
-					</td>
-					<td>
-						<f:link.action action="show" arguments="{dish : dish}">{dish.discount}</f:link.action>
-					</td>
-					<td>
-						<f:link.action action="show" arguments="{dish : dish}">{dish.allergens}</f:link.action>
-					</td>
-					<td>
-						<f:link.action action="show" arguments="{dish : dish}">{dish.frozens}</f:link.action>
-					</td>
-				</tr>
-			</f:for>
-		</f:widget.paginate>
+		<f:for each="{dishes}" as="dish">
+			<tr>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.name}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.description}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.photo.originalResource.name}
+					</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.type}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.price}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.discount}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.allergens}</f:link.action>
+				</td>
+				<td>
+					<f:link.action action="show" arguments="{dish : dish}">{dish.frozens}</f:link.action>
+				</td>
+			</tr>
+		</f:for>
 	</table>
 </f:section>
 </html>
+

@@ -142,7 +142,7 @@ return [
                 'rows' => 15,
                 'eval' => 'trim,required',
             ],
-            
+
         ],
         'service' => [
             'exclude' => false,
@@ -151,7 +151,9 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['-- Label --', 0],
+                    ['Midi', \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Menu::MIDI],
+                    ['Soir', \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Menu::SOIR],
+                    ['Midi et Soir', \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Menu::MIDI_SOIR],
                 ],
                 'size' => 1,
                 'maxitems' => 1,
@@ -204,7 +206,7 @@ return [
                     ],
                 ],
             ],
-            
+
         ],
         'main_dishes' => [
             'exclude' => false,
@@ -230,7 +232,7 @@ return [
                     ],
                 ],
             ],
-            
+
         ],
         'cheeses' => [
             'exclude' => false,
@@ -256,7 +258,7 @@ return [
                     ],
                 ],
             ],
-            
+
         ],
         'desserts' => [
             'exclude' => false,
@@ -282,7 +284,7 @@ return [
                     ],
                 ],
             ],
-            
+
         ],
         'drinks' => [
             'exclude' => false,
@@ -308,8 +310,8 @@ return [
                     ],
                 ],
             ],
-            
+
         ],
-    
+
     ],
 ];

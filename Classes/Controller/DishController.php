@@ -2,6 +2,8 @@
 namespace Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Controller;
 
 
+use TYPO3\CMS\Core\Exception;
+
 /***
  *
  * This file is part of the "Restaurant MHEPTLSMBKEBDM" Extension for TYPO3 CMS.
@@ -25,7 +27,7 @@ class DishController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * dishRepository
-     * 
+     *
      * @var \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Repository\DishRepository
      * @inject
      */
@@ -33,7 +35,7 @@ class DishController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * action list
-     * 
+     *
      * @return void
      */
     public function listAction()
@@ -44,7 +46,7 @@ class DishController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * action show
-     * 
+     *
      * @param \Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model\Dish $dish
      * @return void
      */
@@ -55,7 +57,7 @@ class DishController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * action search
-     * 
+     *
      * @return void
      */
     public function searchAction()
@@ -64,10 +66,14 @@ class DishController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
     /**
      * action focus
-     * 
+     *
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function focusAction()
     {
+        $uids = array_map('intval', explode(',', $this->settings['focus']));
+        $focusedDishes = $this->dishRepository->focus($uids);
+        $this->view->assign('dishes', $focusedDishes);
     }
 }

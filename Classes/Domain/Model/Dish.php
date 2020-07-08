@@ -23,9 +23,14 @@ namespace Mheptlsmbkebdm\RestaurantMheptlsmbkebdm\Domain\Model;
 class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
+    CONST TYPE_ENTRY = 1;
+    CONST TYPE_MAIN = 2;
+    CONST TYPE_CHEESE = 3;
+    CONST TYPE_DESSERT = 4;
+
     /**
      * Nom
-     * 
+     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -33,14 +38,14 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Description
-     * 
+     *
      * @var string
      */
     protected $description = '';
 
     /**
      * Photo
-     * 
+     *
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
@@ -48,7 +53,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Type
-     * 
+     *
      * @var int
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -56,35 +61,35 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Prix
-     * 
+     *
      * @var float
      */
     protected $price = 0.0;
 
     /**
      * Réduction
-     * 
+     *
      * @var float
      */
     protected $discount = 0.0;
 
     /**
      * Contient des allergènes
-     * 
+     *
      * @var bool
      */
     protected $allergens = false;
 
     /**
      * Contient des produits surgelés
-     * 
+     *
      * @var bool
      */
     protected $frozens = false;
 
     /**
      * Returns the name
-     * 
+     *
      * @return string $name
      */
     public function getName()
@@ -94,7 +99,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the name
-     * 
+     *
      * @param string $name
      * @return void
      */
@@ -105,7 +110,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the description
-     * 
+     *
      * @return string $description
      */
     public function getDescription()
@@ -115,7 +120,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the description
-     * 
+     *
      * @param string $description
      * @return void
      */
@@ -126,7 +131,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the photo
-     * 
+     *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $photo
      */
     public function getPhoto()
@@ -136,7 +141,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the photo
-     * 
+     *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $photo
      * @return void
      */
@@ -147,7 +152,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the type
-     * 
+     *
      * @return int $type
      */
     public function getType()
@@ -157,7 +162,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the type
-     * 
+     *
      * @param int $type
      * @return void
      */
@@ -168,7 +173,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the price
-     * 
+     *
      * @return float $price
      */
     public function getPrice()
@@ -178,7 +183,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the price
-     * 
+     *
      * @param float $price
      * @return void
      */
@@ -189,7 +194,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the discount
-     * 
+     *
      * @return float $discount
      */
     public function getDiscount()
@@ -199,7 +204,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the discount
-     * 
+     *
      * @param float $discount
      * @return void
      */
@@ -210,7 +215,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the allergens
-     * 
+     *
      * @return bool $allergens
      */
     public function getAllergens()
@@ -220,7 +225,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the allergens
-     * 
+     *
      * @param bool $allergens
      * @return void
      */
@@ -231,7 +236,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the boolean state of allergens
-     * 
+     *
      * @return bool
      */
     public function isAllergens()
@@ -241,7 +246,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the frozens
-     * 
+     *
      * @return bool $frozens
      */
     public function getFrozens()
@@ -251,7 +256,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the frozens
-     * 
+     *
      * @param bool $frozens
      * @return void
      */
@@ -262,7 +267,7 @@ class Dish extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the boolean state of frozens
-     * 
+     *
      * @return bool
      */
     public function isFrozens()
